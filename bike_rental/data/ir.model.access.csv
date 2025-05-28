@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bike_rental.access_bike_rental,access_bike_rental,bike_rental.model_bike_rental,base.group_user,1,1,1,1
+bike_rental.access_bike_bike,access_bike_bike,bike_rental.model_bike_bike,base.group_user,1,1,1,1
+bike_rental.access_bike_station,access_bike_station,bike_rental.model_bike_station,base.group_user,1,1,1,1

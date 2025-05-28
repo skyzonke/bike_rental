@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_bike_station" model="ir.actions.act_window">
+            <field name="name">Stations de velos</field>
+            <field name="res_model">bike.station</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <record id="view_bike_station_list" model="ir.ui.view">
+            <field name="name">bike.station.list</field>
+            <field name="model">bike.station</field>
+            <field name="arch" type="xml">
+                <list string="Stations">
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="technician_id"/>
+                    <field name="capacity"/>
+                    <field name="bike_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_bike_station_form" model="ir.ui.view">
+            <field name="name">bike.station.form</field>
+            <field name="model">bike.station</field>
+            <field name="arch" type="xml">
+                <form string="Station">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="technician_id"/>
+                            <field name="capacity"/>
+                        </group>
+                        <notebook>
+                            <page string="Vélos">
+                                <field name="bike_ids">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_bike_station_kanban" model="ir.ui.view">
+            <field name="name">bike.station.kanban</field>
+            <field name="model">bike.station</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <strong><field name="name"/></strong>
+                                <div>Capacité: <field name="capacity"/></div>
+                                <div>Vélos disponibles: <field name="available_bike_count"/></div>
+                                <div>Vélos loués: <field name="rented_bike_count"/></div>
+                                <div>En maintenance: <field name="maintenance_bike_count"/></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
